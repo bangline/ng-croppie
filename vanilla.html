@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>ng-croppie demo</title>
+	<link rel="stylesheet" href="node_modules/croppie/croppie.css" />
+	<script src="node_modules/croppie/croppie.js"></script>
+	<style>
+		.cropBounds {
+			width: 500px;
+			height: 500px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="cropBounds">
+		<div id="vanilla-demo"></div>
+		<img id="result" src="" />
+	</div>
+</body>
+
+<script>
+	var el = document.getElementById('vanilla-demo'),
+		resultEl = document.getElementById('result');
+	var output = {
+		type: 'base64',
+		size: 'viewport'
+	}
+	var vanilla = new Croppie(el, {
+		viewport: { width: 250, height: 250, type: 'circle' },
+		boundary: { width: 350, height: 350 },
+		showZoomer: true,
+		update: function (crop) {
+			this.result(output).then(function (img) {
+				resultEl.setAttribute("src", img)
+			});
+		}
+	});
+	vanilla.bind({ url: 'https://raw.githubusercontent.com/Foliotek/Croppie/master/demo/demo-1.jpg' });
+
+</script>
+
+</html>

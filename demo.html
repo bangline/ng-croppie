@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="demoApp">
+
+<head>
+	<title>ng-croppie demo</title>
+	<link rel="stylesheet" href="node_modules/croppie/croppie.css" />
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script src="node_modules/croppie/croppie.js"></script>
+	<script src="ng-croppie.js"></script>
+	<script src="demo.controller.js"></script>
+	<style>
+		.cropBounds {
+			width: 500px;
+			height: 500px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="cropBounds" ng-controller="DemoController">
+		<croppie src="inputImage" ng-model="outputImage.data" options="cropOptions">
+		</croppie>
+		<img ng-src="{{outputImage.data}} " />
+	</div>
+</body>
+
+</html>
